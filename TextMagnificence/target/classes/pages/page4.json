@@ -1,0 +1,18 @@
+{
+  "id": 4,
+  "isEndChapter": false,
+  "elements":
+  [
+    {
+      "id": 1,
+      "text": "awawaw",
+      "answers":
+      [
+        {
+          "text": "Далее...",
+          "nextPageId": 5
+        }
+      ]
+    }
+  ]
+}

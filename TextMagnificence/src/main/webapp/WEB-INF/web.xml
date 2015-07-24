@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+    <display-name>TextMagnificence</display-name>
+
+    <!-- MONGO CONTEXT PARAMS -->
+    <context-param>
+        <param-name>MONGODB_HOST</param-name>
+        <param-value>localhost</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>MONGODB_PORT</param-name>
+        <param-value>27017</param-value>
+    </context-param>
+
+
+    <!-- APP LISTENER -->
+    <listener>
+        <listener-class>web.listener.AppContextListener</listener-class>
+    </listener>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jspf</url-pattern>
+        </jsp-property-group>
+    </jsp-config>
+
+
+
+    <!-- SERVLETS -->
+
+
+    <!-- test setvlet -->
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>web.servlet.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <!-- test jsp -->
+    <servlet>
+        <servlet-name>TestJSP</servlet-name>
+        <jsp-file>/WEB-INF/view/jsp/admin/story_create.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestJSP</servlet-name>
+        <url-pattern>/testjsp</url-pattern>
+    </servlet-mapping>
+    <!-- FILTERS -->
+
+
+</web-app>

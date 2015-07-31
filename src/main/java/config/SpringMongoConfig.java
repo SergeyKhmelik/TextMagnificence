@@ -1,0 +1,26 @@
+package config;
+
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+
+/**
+ * Created by koloturka on 30.07.15.
+ */
+@Configuration
+public class SpringMongoConfig extends AbstractMongoConfiguration {
+
+    @Override
+    public String getDatabaseName() {
+        return "text";
+    }
+
+    @Override
+    @Bean
+    public Mongo mongo() throws Exception {
+        return new MongoClient("127.0.0.1");
+    }
+}
+

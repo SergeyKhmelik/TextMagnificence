@@ -9,6 +9,7 @@
               http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <context:component-scan base-package="dao.mongo, config" />
+       <context:component-scan base-package="dao.mongo, config, service, web" />
+       <context:annotation-config />
 
 </beans>

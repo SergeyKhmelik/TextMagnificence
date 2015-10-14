@@ -13,7 +13,7 @@
        <mvc:annotation-driven />
 
        <!-- Scan controllers -->
-       <context:component-scan base-package="web.controller" />
+       <context:component-scan base-package="web" />
 
        <!-- Release static resources -->
        <mvc:resources mapping="/resources/**"
@@ -33,5 +33,9 @@
                      <value>.jsp</value>
               </property>
        </bean>
+
+       <bean class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" />
+
+       <bean class="config.SpringMVCSwaggerConfig" />
 
 </beans>

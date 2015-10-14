@@ -1,47 +1,74 @@
 package dao;
 
-import dao.db_attributes.*;
-import entity.*;
+import dao.mongo.enum_attributes.Attribute;
+import domain.*;
+import exceptions.NoSuchDataException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Created by koloturka on 22.07.15.
+ * @author Koloturka
+ * @version 25.08.2015 17:16
  */
 public interface GameManagementDao {
 
-    int createStory(Story story);
+	int createStory(Story story);
 
-    int updateStory(int idStory, HashMap<Attribute, String> updates);
+	Story readStory(int idStory);
 
-    int insertChapter(int storyId, Chapter chapter);
+	List<Story> readStories();
 
-    int updateChapter(int idStory, int idChapter, HashMap<Attribute, String> updates);
+	int updateStory(int idStory, Map<? extends Attribute, Object> updates);
 
-    int deleteChapter(int storyId, int idChapter);
+	int upsertStory(int idStory, Story story);
 
-    int insertPage(Page page);
+	int insertChapter(Chapter chapter);
 
-    int updatePage(int idPage, HashMap<Attribute, String> updates);
+	Chapter readChapter(int idChapter) throws NoSuchDataException;
 
-    int deletePage(int idPage);
+	List<Chapter> readChapters(int idStory);
 
-    int insertScreen(int idPage, Screen screen);
+	int updateChapter(int idChapter, Map<Attribute, Object> updates);
 
-    int updateScreen(int idPage, int idScreen, HashMap<Attribute, String> updates);
+	int upsertChapter(int idChapter, Chapter chapter);
 
-    int deleteScreen(int idPage, int idScreen);
+	int deleteChapter(int idChapter);
 
-    int insertAnswer(int idPage, int idScreen, Answer answer);
+	int getChapterIdByPage(int idPage);
 
-    int deleteAnswer(int idPage, int idScreen, String text);
+	int insertPage(Page page);
 
-    ArrayList<Story> readStories();
+	Page readPage(int idPage) throws NoSuchDataException;
 
-    ArrayList<Chapter> readChapters(int idStory);
+	List<Page> readPages(List<Integer> pagesList);
 
-    ArrayList<Page> readPages(int idStory);
+	List<Page> readPages(int idChapter);
 
-    ArrayList<Screen> readScreens(int idPage);
+	int updatePage(int idPage, Map<Attribute, Object> updates);
+
+	int upsertPage(int idPage, Page page);
+
+	int deletePage(int idPage);
+
+	int insertScreen(int idPage, Screen screen);
+
+	Screen readScreen(int idPage, int idScreen) throws NoSuchDataException;
+
+	List<Screen> readScreens(int idPage);
+
+	int updateScreen(int idPage, int idScreen, Map<Attribute, Object> updates);
+
+	int upsertScreen(int idPage, int idScreen, Screen screen);
+
+	int deleteScreen(int idPage, int idScreen);
+
+	int insertAnswer(int idPage, int idScreen, Answer answer);
+
+	Answer readAnswer(int idPage, int idScreen, String text);
+
+	List<Answer> readAnswers(int idPage, int idScreen);
+
+	int deleteAnswer(int idPage, int idScreen, String text);
+
 }

@@ -2,15 +2,17 @@ package dao;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import dao.db_attributes.Attribute;
-import entity.*;
+import dao.mongo.enum_attributes.Attribute;
+import domain.*;
 
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by koloturka on 22.07.15.
  */
 public interface ConverterUtil {
+
     DBObject convertStoryToDBObject(Story story);
 
     Story convertDBObjectToStory(DBObject dbObject);
@@ -21,7 +23,7 @@ public interface ConverterUtil {
 
     DBObject convertPageToDBObject(Page page);
 
-    Page convertDBObjectToSPage(DBObject dbObject);
+    Page convertDBObjectToPage(DBObject dbObject);
 
     DBObject convertScreenToDBObject(Screen screen);
 
@@ -31,5 +33,14 @@ public interface ConverterUtil {
 
     Answer convertDBObjectToAnswer(DBObject dbObject);
 
-    void convertUpdatesToDBObject(BasicDBObject setQuery, HashMap<Attribute, String> updates);
+    void convertUpdatesToDBObject(BasicDBObject setQuery, Map<? extends Attribute, Object> updates);
+
+    DBObject convertUserToDBObject(User user);
+
+    User convertDBObjectToUser(DBObject object);
+
+    DBObject convertSaveToDBObject(Save save);
+
+    Save convertDBObjectToSave(DBObject resultDBObject);
+
 }

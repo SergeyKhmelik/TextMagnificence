@@ -1,11 +1,17 @@
-package web.data_utils;
+package web.response_data_utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Koloturka
- * @version 18.08.2015 14:31
+ * This class is needed to make all responding
+ * data match a single pattern, which is:
+ * {
+ *    data:
+ *    		[
+ *    			... here is response data
+ *    		]
+ * }
  */
 public class ResponseObject<T> {
 
@@ -27,4 +33,5 @@ public class ResponseObject<T> {
 	public void setData(ArrayList<T> data) {
 		this.data = data;
 	}
+
 }

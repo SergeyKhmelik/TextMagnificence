@@ -1,11 +1,19 @@
-package web.data_utils;
+package web.response_data_utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Koloturka
- * @version 18.08.2015 18:41
+ * This class is needed to make all responding
+ * errors match a single error pattern, which is:
+ * {
+ *    type: "error class name here",
+ *    userMessage: "user message here",
+ *    errors:
+ *    		[
+ *    			... here are errors with their stack trace
+ *    		]
+ * }
  */
 public class ResponseError<T> {
 
@@ -47,4 +55,5 @@ public class ResponseError<T> {
 	public void setUserMessage(String userMessage) {
 		this.userMessage = userMessage;
 	}
+
 }

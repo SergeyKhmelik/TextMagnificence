@@ -4,10 +4,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-/**
- * @author Koloturka
- * @version 04.09.2015 15:45
- */
 public class User {
 
 	@Pattern(regexp = "[a-zA-Z0-9]+[\\s]*", message = "Name should consist of english letters, numbers and space.")
@@ -15,7 +11,6 @@ public class User {
 
 	@Pattern(regexp = "[a-zA-Z0-9]{32}", message = "Password field should be 32symbol length (hash).")
 	private String password;
-
 
 	private Role role;
 

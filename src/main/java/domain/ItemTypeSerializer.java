@@ -7,10 +7,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 import java.io.IOException;
 
-/**
- * @author Koloturka
- * @version 19.08.2015 19:29
- */
 public class ItemTypeSerializer extends JsonSerializer<ItemType> {
 
 	@Override

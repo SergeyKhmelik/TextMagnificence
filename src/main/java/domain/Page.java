@@ -3,18 +3,11 @@ package domain;
 import javax.validation.constraints.*;
 import java.util.List;
 
-/**
- * Created by koloturka on 20.07.15.
- */
 public class Page {
 
     @Min(value = 1, message = "Page id should be positive integer.")
     private int idPage;
 
-    /*
-        @Min(value = 1, message = "Chapter id of the page should be positive integer.")
-        @NotNull(message = "Chapter id of the page should not be null.")
-    */
     private int idChapter;
 
     private boolean endChapter;

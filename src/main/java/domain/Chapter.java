@@ -5,18 +5,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
-/**
- * Created by koloturka on 20.07.15.
- */
 public class Chapter {
 
     @Min(value = 1, message = "Chapter id should be unique positive integer.")
     private int idChapter;
 
-    /*
-    @Min(value = 1, message = "Story id of the chapter should be positive integer.")
-    @NotNull(message = "Story id of the chapter should not be null.")
-    */
     private int idStory;
 
     @Pattern(regexp = ".+", message = "Chapter name should consist of at lease 1 symbol.")

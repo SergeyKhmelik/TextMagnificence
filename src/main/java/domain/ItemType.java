@@ -3,9 +3,6 @@ package domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * Created by koloturka on 20.07.15.
- */
 @JsonFormat(shape = JsonFormat.Shape.STRING)
 @JsonSerialize(using = ItemTypeSerializer.class)
 public enum ItemType {

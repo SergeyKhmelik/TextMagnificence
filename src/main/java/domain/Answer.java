@@ -4,10 +4,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * Created by koloturka on 20.07.15.
- */
-
 public class Answer {
 
     @NotNull

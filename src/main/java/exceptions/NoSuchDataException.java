@@ -8,11 +8,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-/**
- * @author Koloturka
- * @version 18.08.2015 19:56
- */
-
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class NoSuchDataException extends NoSuchElementException {
 

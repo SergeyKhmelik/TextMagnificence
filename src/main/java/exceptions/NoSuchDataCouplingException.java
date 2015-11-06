@@ -2,10 +2,6 @@ package exceptions;
 
 import java.util.NoSuchElementException;
 
-/**
- * @author Koloturka
- * @version 21.08.2015 20:47
- */
 public class NoSuchDataCouplingException extends NoSuchElementException {
 
 	private Class dependentClass;

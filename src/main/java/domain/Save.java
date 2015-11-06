@@ -5,9 +5,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-/**
- * Created by koloturka on 28.09.2015.
- */
 public class Save {
 
     @NotNull

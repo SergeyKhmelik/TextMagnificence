@@ -3,10 +3,6 @@ package domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * @author Koloturka
- * @version 04.09.2015 18:18
- */
 @JsonFormat(shape = JsonFormat.Shape.STRING)
 @JsonSerialize(using = RoleSerializer.class)
 public enum Role {

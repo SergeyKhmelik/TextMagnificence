@@ -12,10 +12,6 @@ import service.UserService;
 import javax.validation.Valid;
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 
-/**
- * Created by koloturka on 07.08.15.
- */
-
 @RestController
 @RequestMapping("/registration")
 public class UserController {

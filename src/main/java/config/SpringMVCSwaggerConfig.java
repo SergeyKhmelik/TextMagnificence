@@ -10,15 +10,10 @@ import org.springframework.context.annotation.Bean;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author Koloturka
- * @version 28.08.2015 11:40
- */
-
 @EnableSwagger
 public class SpringMVCSwaggerConfig {
 
-	private static final List<String> URL_PATTERNS = Arrays.asList("/stories", "/stories/.*");
+	private static final String URL_PATTERNS = "/.*";
 
 	@Autowired
 	private SpringSwaggerConfig springSwaggerConfig;
@@ -27,7 +22,7 @@ public class SpringMVCSwaggerConfig {
 	public SwaggerSpringMvcPlugin customImplementation(){
 		return new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
 				.apiInfo(apiInfo())
-				.includePatterns("/.*");
+				.includePatterns(URL_PATTERNS);
 	}
 
 	private ApiInfo apiInfo() {

@@ -11,16 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-/**
- * @author Koloturka
- * @version 04.09.2015 14:28
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-//	@Autowired
-//	private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -32,39 +25,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.passwordEncoder(new Md5PasswordEncoder())
 		;
 	}
-
-	/*
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.httpBasic()
-				.authenticationEntryPoint(restAuthenticationEntryPoint)
-			.and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-			.and()
-				.rememberMe()
-					.tokenValiditySeconds(2419200)
-					.key("textMagnificenceKey")
-			.and()
-				.authorizeRequests()
-					.antMatchers("/stories/**").authenticated()
-					.antMatchers(HttpMethod.POST, "/stories/**").hasRole(Role.ADMIN.toValue())
-					.antMatchers(HttpMethod.PUT, "/stories/**").hasRole(Role.ADMIN.toValue())
-					.antMatchers(HttpMethod.DELETE, "stories/**").hasRole(Role.ADMIN.toValue())
-					.anyRequest().permitAll()
-			.and()
-				.logout()
-					.logoutSuccessUrl("/")
-					.logoutUrl("/logout")
-			.and()
-				.addFilterBefore(new AuthenticationTokenProcessingFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
-
-//			.and()
-//				.csrf()
-//					.disable()
-		;
-	}
-	*/
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

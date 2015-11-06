@@ -14,9 +14,6 @@ import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by koloturka on 04.08.15.
- */
 @Service
 public class MongoUserServiceImpl implements UserService {
 

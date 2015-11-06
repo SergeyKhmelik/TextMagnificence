@@ -17,6 +17,8 @@ import java.util.List;
 @Component
 public class MongoSaveDaoImpl implements SaveDao {
 
+    public static final String DB_NAME = "TextMagnificence";
+    public static final String SAVES_COLLECTION = "saves";
     private ConverterUtil converterUtil;
     private DB textGameDB;
     private DBCollection saves;
@@ -28,8 +30,8 @@ public class MongoSaveDaoImpl implements SaveDao {
 
     @Autowired
     public void setMongoClient(Mongo mongoClient) {
-        this.textGameDB = mongoClient.getDB("TextMagnificence");
-        this.saves = textGameDB.getCollection("saves");
+        this.textGameDB = mongoClient.getDB(DB_NAME);
+        this.saves = textGameDB.getCollection(SAVES_COLLECTION);
     }
 
     @Override

@@ -4,13 +4,9 @@ import domain.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.GameManagementService;
-import web.data_utils.ResponseObject;
+import web.response_data_utils.ResponseObject;
 
 import javax.validation.Valid;
-
-/**
- * Created by koloturka on 14.08.2015.
- */
 
 @RestController
 @RequestMapping("/stories/{idStory}/chapters/{idChapter}/pages/{idPage}/screens/{idScreen}/answers")

@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import dao.mongo.serializers.StoryAttrSerializer;
 
-/**
- * Created by koloturka on 22.07.15.
- */
-
 @JsonFormat(shape = JsonFormat.Shape.STRING)
 @JsonSerialize(using = StoryAttrSerializer.class)
 public enum StoryAttr implements Attribute {

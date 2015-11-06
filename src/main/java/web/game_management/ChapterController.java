@@ -4,13 +4,10 @@ import domain.Chapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.GameManagementService;
-import web.data_utils.ResponseObject;
+import web.response_data_utils.ResponseObject;
 
 import javax.validation.Valid;
 
-/**
- * Created by koloturka on 07.08.15.
- */
 @RestController
 @RequestMapping("/stories/{idStory}/chapters")
 public class ChapterController {
@@ -22,17 +19,10 @@ public class ChapterController {
         this.gameManagementService = gameManagementService;
     }
 
-    /**
-     * Reads all chapters, that belong to story {@code idStory}
-     * @param idStory URL path variable, that defines story domain.
-     * @return List of chapters of {@code idStory} story.
-     */
-
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody ResponseObject<Chapter> getChapters(@PathVariable int idStory){
         return new ResponseObject(gameManagementService.readChapters(idStory));
     }
-
 
     @RequestMapping(value = "/{idChapter}", method = RequestMethod.GET)
     public @ResponseBody ResponseObject<Chapter> getChapter(@PathVariable int idStory, @PathVariable int idChapter){
@@ -44,13 +34,6 @@ public class ChapterController {
         chapter.setIdStory(idStory);
         return new ResponseObject(gameManagementService.insertChapter(chapter));
     }
-
-//    //TODO not workin' ( attribute map, how to? :( )
-//    @RequestMapping(value = "/{idChapter}", method = RequestMethod.PUT)
-//    public @ResponseBody ResponseObject<Chapter> updateChapter(@PathVariable int idStory, @PathVariable int idChapter,
-//                                                               @RequestBody Map<Attribute, Object> updates){
-//        return new ResponseObject(gameManagementService.updateChapter(idStory, idChapter, updates));
-//    }
 
     @RequestMapping(value = "/{idChapter}", method = RequestMethod.PUT)
     public @ResponseBody ResponseObject<Chapter> upsertChapter(@PathVariable int idStory, @PathVariable int idChapter,

@@ -17,6 +17,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MongoUserDaoImpl implements UserDao{
 
+	public static final String DB_NAME = "TextMagnificence";
+	public static final String USERS_COLLECTION = "users";
+
 	private ConverterUtil converterUtil;
 	private DB textGameDB;
 	private DBCollection users;
@@ -28,8 +31,8 @@ public class MongoUserDaoImpl implements UserDao{
 
 	@Autowired
 	public void setMongoClient(Mongo mongoClient) {
-		this.textGameDB = mongoClient.getDB("TextMagnificence");
-		this.users = textGameDB.getCollection("users");
+		this.textGameDB = mongoClient.getDB(DB_NAME);
+		this.users = textGameDB.getCollection(USERS_COLLECTION);
 	}
 
 	@Override

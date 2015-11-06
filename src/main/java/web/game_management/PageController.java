@@ -1,28 +1,24 @@
 package web.game_management;
 
 import domain.Page;
-import domain.Role;
 import exceptions.PageAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.GameManagementService;
 import service.SaveService;
-import web.data_utils.ResponseObject;
+import web.response_data_utils.ResponseObject;
 
 import javax.validation.Valid;
 import java.util.Map;
 
-/**
- * Created by koloturka on 07.08.15.
- */
-
 @RestController
 @RequestMapping("/stories/{idStory}/chapters/{idChapter}/pages")
 public class PageController {
+
+    public static final String PAGE_AVAILABILITY_ROLE_RESTRICTION = "ROLE_ADMIN";
 
     @Autowired
     private GameManagementService gameManagementService;
@@ -44,7 +40,7 @@ public class PageController {
     @RequestMapping(value = "/{idPage}", method = RequestMethod.GET)
     public @ResponseBody ResponseObject<Page> getPage(@PathVariable int idStory, @PathVariable int idChapter, @PathVariable int idPage) throws PageAccessException {
         Authentication user = SecurityContextHolder.getContext().getAuthentication();
-        if (!user.getAuthorities().contains("ROLE_ADMIN") && !saveService.isViewablePage(idStory, user.getName(), idPage)) {
+        if (!user.getAuthorities().contains(PAGE_AVAILABILITY_ROLE_RESTRICTION) && !saveService.isViewablePage(idStory, user.getName(), idPage)) {
             throw new PageAccessException("Not eligible to enter this page.");
         }
         return new ResponseObject(gameManagementService.readPage(idStory, idChapter, idPage));
@@ -67,19 +63,11 @@ public class PageController {
         return new ModelAndView("redirect:/stories/" + idStory + "/chapters/" + idChapter + "/pages/" + idNextPage);
     }
 
-
-    //    @RequestMapping(value = "/{idPage}", method = RequestMethod.PUT)
-//    public @ResponseBody ResponseObject<Page> updatePage(@PathVariable int idStory, @PathVariable int idChapter,
-//                                                         @PathVariable int idPage ,@RequestBody Map<Attribute, Object> updates) {
-//        return new ResponseObject(gameManagementService.updatePage(idStory, idChapter, idPage, updates));
-//    }
-
-        /*  DELETE TEMPORARY UNAVAILABLE
+    /*  DELETE TEMPORARY UNAVAILABLE
     @RequestMapping(value = "/{idPage}", method = RequestMethod.DELETE)
     public @ResponseBody String deletePage(@PathVariable int idPage){
         return gameManagementService.deletePage(idPage);
     }
     */
-
 
 }

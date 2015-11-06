@@ -6,21 +6,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
-/**
- * Created by koloturka on 30.07.15.
- */
 @Configuration
 public class SpringMongoConfig extends AbstractMongoConfiguration {
 
+    public static final String DB_NAME = "text";
+    public static final String HOST = "127.0.0.1";
+
     @Override
     public String getDatabaseName() {
-        return "text";
+        return DB_NAME;
     }
 
     @Override
     @Bean
     public Mongo mongo() throws Exception {
-        return new MongoClient("127.0.0.1");
+        return new MongoClient(HOST);
     }
 }
 

@@ -18,7 +18,6 @@ import java.util.*;
 @Component
 public class MongoConverterUtil implements ConverterUtil {
 
-	//TODO два цикла проверить на необходимость (сравнить с чаптерами)
 	public DBObject convertStoryToDBObject(Story story) {
 		BasicDBList genreList = new BasicDBList();
 		for (String genre : story.getGenre()) {

@@ -1,7 +1,6 @@
 package service.mongo;
 
 import dao.GameManagementDao;
-import dao.mongo.enum_attributes.Attribute;
 import domain.*;
 import exceptions.NoSuchDataCouplingException;
 import exceptions.NoSuchDataException;
@@ -10,21 +9,12 @@ import service.GameManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import java.util.Map;
 
-/**
- * Created by koloturka on 04.08.15.
- */
 @Service
 public class MongoGameManagementServiceImpl implements GameManagementService {
 
-	private GameManagementDao gameManagementDao;
-
 	@Autowired
-	public void setGameManagementDao(GameManagementDao gameManagementDao) {
-		this.gameManagementDao = gameManagementDao;
-	}
-
+	private GameManagementDao gameManagementDao;
 
 	/*
 	Stories
@@ -43,12 +33,6 @@ public class MongoGameManagementServiceImpl implements GameManagementService {
 	@Override
 	public List<Story> readStories() {
 		return gameManagementDao.readStories();
-	}
-
-	@Override
-	public Story updateStory(int idStory, Map<? extends Attribute, Object> updates) {
-		gameManagementDao.updateStory(idStory, updates);
-		return gameManagementDao.readStory(idStory);
 	}
 
 	public Story upsertStory(int idStory, Story story) throws NoSuchDataException{
@@ -78,13 +62,6 @@ public class MongoGameManagementServiceImpl implements GameManagementService {
 	public List<Chapter> readChapters(int idStory) throws NoSuchDataException {
 		getStoryIfExists(idStory);
 		return gameManagementDao.readChapters(idStory);
-	}
-
-	//TODO update chapter control update fields!
-	@Override
-	public Chapter updateChapter(int idStory, int idChapter, Map<Attribute, Object> updates) throws NoSuchDataException, NoSuchDataCouplingException {
-		gameManagementDao.updateChapter(idChapter, updates);
-		return gameManagementDao.readChapter(idChapter);
 	}
 
 	@Override
@@ -132,13 +109,6 @@ public class MongoGameManagementServiceImpl implements GameManagementService {
 		return gameManagementDao.readPages(idChapter);
 	}
 
-	//TODO UPDATE control
-	@Override
-	public Page updatePage(int idStory, int idChapter, int idPage, Map<Attribute, Object> updates) throws NoSuchDataException, NoSuchDataCouplingException {
-		gameManagementDao.updatePage(idPage, updates);
-		return gameManagementDao.readPage(idPage);
-	}
-
 	@Override
 	public Page upsertPage(int idStory, int idChapter, int idPage, Page page) throws NoSuchDataException, NoSuchDataCouplingException {
 		getStoryIfExists(idStory);
@@ -182,13 +152,6 @@ public class MongoGameManagementServiceImpl implements GameManagementService {
 		getStoryIfExists(idStory);
 		getChapterIfExistsAndBelongsToCurrentStory(idStory, idChapter);
 		return getPageIfExistsAndBelongsToCurrentChapter(idChapter, idPage).getScreens();
-	}
-
-	//TODO UPDATE control screen
-	@Override
-	public Screen updateScreen(int idPage, int idScreen, Map<Attribute, Object> updates) {
-		gameManagementDao.updateScreen(idPage, idScreen, updates);
-		return gameManagementDao.readScreen(idPage, idScreen);
 	}
 
 	@Override

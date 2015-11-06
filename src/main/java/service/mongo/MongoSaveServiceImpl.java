@@ -7,10 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SaveService;
 
-/**
- * Created by koloturka on 28.09.2015.
- */
-
 @Service
 public class MongoSaveServiceImpl implements SaveService {
 
@@ -46,10 +42,7 @@ public class MongoSaveServiceImpl implements SaveService {
     @Override
     public boolean isViewablePage(int idStory, String username, int idPage) {
         Save save = saveDao.readSave(idStory, username);
-        if(save == null){
-            return false;
-        }
-        return save.getPages().contains(idPage);
+        return save != null && save.getPages().contains(idPage);
     }
 
 }

@@ -8,10 +8,6 @@ import dao.mongo.enum_attributes.StoryAttr;
 
 import java.io.IOException;
 
-/**
- * @author Koloturka
- * @version 31.08.2015 13:50
- */
 public class StoryAttrSerializer extends JsonSerializer<StoryAttr> {
 
 	@Override

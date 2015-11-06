@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.GameManagementService;
 import service.SaveService;
-import web.data_utils.ResponseObject;
+import web.response_data_utils.ResponseObject;
 
 import javax.validation.Valid;
-
-/**
- * Created by koloturka on 07.08.15.
- */
 
 @RestController
 @RequestMapping(value = "/stories")
@@ -44,26 +40,10 @@ public class StoryController {
 		return new ResponseObject(gameManagementService.createStory(story));
 	}
 
-//	@RequestMapping(value = "/{idStory}", method = RequestMethod.PUT)
-//	public @ResponseBody ResponseObject<Story> updateStory(@PathVariable int idStory, @RequestBody Map<StoryAttr, Object> updates) {
-//		return new ResponseObject(gameManagementService.updateStory(idStory, updates));
-//	}
-
 	@RequestMapping(value = "/{idStory}", method = RequestMethod.PUT)
 	public @ResponseBody ResponseObject<Story> updateStory(@PathVariable int idStory, @Valid @RequestBody Story story) {
 		return new ResponseObject(gameManagementService.upsertStory(idStory, story));
 	}
-
-
-
-    /*
-    @RequestMapping(value = "/{idStory}", method = RequestMethod.DELETE)
-    public @ResponseBody String deleteStory(@PathVariable int idStory) {
-        return gameManagementService.deleteStory(idStory);
-    }
-    */
-
-
 
 	@RequestMapping(value = "/{idStory}/lastSave", method = RequestMethod.GET)
 	public ModelAndView getLastSave(@PathVariable int idStory){
@@ -82,5 +62,11 @@ public class StoryController {
 		return new ModelAndView("redirect:/stories");
 	}
 
+	/*
+    @RequestMapping(value = "/{idStory}", method = RequestMethod.DELETE)
+    public @ResponseBody String deleteStory(@PathVariable int idStory) {
+        return gameManagementService.deleteStory(idStory);
+    }
+    */
 
 }

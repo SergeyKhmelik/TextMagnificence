@@ -19,10 +19,6 @@
        <mvc:resources mapping="/resources/**"
                       location="WEB-INF/resources/" />
 
-       <!--
-       <mvc:resources mapping="/view/jspf/**" location="WEB-INF/view/jspf" />
-       -->
-
        <!-- JSP mapping -->
        <bean
                class="org.springframework.web.servlet.view.InternalResourceViewResolver">

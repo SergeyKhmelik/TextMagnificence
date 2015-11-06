@@ -18,6 +18,11 @@ import java.util.*;
 @Component
 public class MongoGameManagementDaoImpl implements GameManagementDao {
 
+	public static final String DB_NAME = "TextMagnificence";
+	public static final String STORIES_COLLECTION = "stories";
+	public static final String CHAPTERS_COLLECTION = "chapters";
+	public static final String PAGES_COLLECTION = "pages";
+
 	private ConverterUtil converterUtil;
 	private DB textGameDB;
 	private DBCollection stories;
@@ -31,10 +36,10 @@ public class MongoGameManagementDaoImpl implements GameManagementDao {
 
 	@Autowired
 	public void setMongoClient(Mongo mongoClient) {
-		this.textGameDB = mongoClient.getDB("TextMagnificence");
-		this.stories = textGameDB.getCollection("stories");
-		this.chapters = textGameDB.getCollection("chapters");
-		this.pages = textGameDB.getCollection("pages");
+		this.textGameDB = mongoClient.getDB(DB_NAME);
+		this.stories = textGameDB.getCollection(STORIES_COLLECTION);
+		this.chapters = textGameDB.getCollection(CHAPTERS_COLLECTION);
+		this.pages = textGameDB.getCollection(PAGES_COLLECTION);
 	}
 
 
@@ -444,30 +449,5 @@ public class MongoGameManagementDaoImpl implements GameManagementDao {
 		pages.update(findQuery, deleteQuery);
 		return idScreen;
 	}
-
-	/*
-    public Chapter readChapter(int idStory, int idChapter) {
-        Chapter chapter = new Chapter();
-
-        List<DBObject> pipeline = new ArrayList<DBObject>();
-        BasicDBObject matchStory = new BasicDBObject("$match", new BasicDBObject(StoryAttr.ID_STORY.getName(), idStory));
-        pipeline.add(matchStory);
-        BasicDBObject unwind = new BasicDBObject("$unwind", '$' + StoryAttr.CHAPTERS.getName());
-        pipeline.add(unwind);
-        BasicDBObject project = new BasicDBObject("$project",
-                new BasicDBObject(StoryAttr.CHAPTERS.getName(), 1).append("_id", 0));
-        pipeline.add(project);
-        BasicDBObject matchChapter = new BasicDBObject("$match",
-                new BasicDBObject(StoryAttr.CHAPTERS.getName() + '.' + ChapterAttr.ID_CHAPTER.getName(), idChapter));
-        pipeline.add(matchChapter);
-        AggregationOutput output = stories.aggregate(pipeline);
-        if (output.results().iterator().hasNext()) {
-            chapter = converterUtil.convertDBObjectToChapter(
-                    (DBObject) output.results().iterator().next().get(StoryAttr.CHAPTERS.getName()));
-        }
-
-        return chapter;
-    }
-    */
 
 }

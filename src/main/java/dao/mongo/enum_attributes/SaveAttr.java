@@ -1,8 +1,5 @@
 package dao.mongo.enum_attributes;
 
-/**
- * Created by koloturka on 28.09.2015.
- */
 public enum SaveAttr {
 
     ID_STORY("idStory"), USERNAME("username"), PAGES("pages");

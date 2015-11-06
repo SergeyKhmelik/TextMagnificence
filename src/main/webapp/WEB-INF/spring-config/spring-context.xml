@@ -10,6 +10,7 @@
 
 
        <context:component-scan base-package="dao.mongo, config, service, web" />
+
        <context:annotation-config />
 
 </beans>

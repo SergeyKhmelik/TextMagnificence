@@ -1,8 +1,5 @@
 package dao.mongo.enum_attributes;
 
-/**
- * Created by koloturka on 22.07.15.
- */
 public enum ScreenAttr implements Attribute {
 
     ID_SCREEN("idScreen"), TEXT("text"),
